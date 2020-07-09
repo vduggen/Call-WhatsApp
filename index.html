@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Call without add</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="assets/WhatsApp-icon.png" />
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+    <article>
+        <header>
+            <img src="assets/WhatsApp-icon.webp" alt="logo whatsapp">
+            <h1 class="text-uppercase font-weight-bold">
+                Call Without Add
+            </h1>
+            <img src="assets/WhatsApp-icon.webp" alt="logo whatsapp">
+        </header>
+
+        
+        <main>
+            <p id="ErroMsg" class="text-danger m-0"></p>
+
+            <h4>Coloque o número da pessoa que deseja chamar:</h4>
+
+            <div class="container d-flex align-items-center justify-content-center">                
+                <input 
+                    id="number"
+                    type="text" 
+                    class="form-control"
+                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                    placeholder="Digite o DDD + Número"
+                >
+
+                <button onclick="call()" type="button" class="btn btn-success ml-2">Chamar</button>
+            </div>
+        </main>
+
+        <footer>
+            Developed by <a class="text-success ml-1" href="https://github.com/vduggen" target="__blank" rel="noopener">zlotyss</a>
+        </footer>
+    </article>
+
+
+
+    <script>
+        const call = () => {
+            let valueInput = document.getElementById('number').value;
+
+            if (valueInput.length === 0) {
+                document.getElementById('ErroMsg').innerHTML = 'O campo do número não pode ser vazio!';
+
+                setTimeout(() => { 
+                    document.getElementById('ErroMsg').innerHTML = '';
+                }, 2500);
+
+                return false;
+            }else {
+                window.open(`https://api.whatsapp.com/send?phone=55${valueInput}`, '__blank rel="noopener"');
+            }
+        }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
